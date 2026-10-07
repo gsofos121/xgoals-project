@@ -1,0 +1,116 @@
+{
+  "model_name": "multi_competition_xg_v3_enhanced_logistic",
+  "model_type": "enhanced_logistic_regression_with_separate_penalty_probability",
+  "penalty_rule": {
+    "shot_type": "Penalty",
+    "xg": 0.7420042643923241,
+    "training_penalties": 469,
+    "training_penalty_goals": 348
+  },
+  "non_penalty_model": {
+    "features": [
+      "distance_m",
+      "angle_deg",
+      "under_pressure",
+      "shot_first_time",
+      "shot_one_on_one",
+      "shot_open_goal",
+      "body_left_foot",
+      "body_head",
+      "type_free_kick",
+      "play_regular",
+      "play_counter",
+      "play_corner",
+      "distance_sq",
+      "angle_sq",
+      "distance_angle",
+      "distance_head",
+      "counter_one_on_one",
+      "corner_head"
+    ],
+    "intercept": -2.260728857183267,
+    "coefficients": {
+      "distance_m": -0.08881419899490409,
+      "angle_deg": 0.024321585037821322,
+      "under_pressure": -0.201732252447846,
+      "shot_first_time": -0.03118100274013668,
+      "shot_one_on_one": 0.8314382053778404,
+      "shot_open_goal": 1.293045722311066,
+      "body_left_foot": -0.023790661231242377,
+      "body_head": -0.6381593187879375,
+      "type_free_kick": 1.008206680738024,
+      "play_regular": 0.11082473722902154,
+      "play_counter": 0.5535601291039384,
+      "play_corner": -0.4463357573983941,
+      "distance_sq": -0.001340846077067298,
+      "angle_sq": -4.404036850199758e-05,
+      "distance_angle": 0.0030082347309721862,
+      "distance_head": -0.061874014665478275,
+      "counter_one_on_one": -0.21213727688835732,
+      "corner_head": 0.0444280060921522
+    }
+  },
+  "feature_engineering": {
+    "distance_sq": "distance_m ** 2",
+    "angle_sq": "angle_deg ** 2",
+    "distance_angle": "distance_m * angle_deg",
+    "distance_head": "distance_m * body_head",
+    "counter_one_on_one": "play_counter * shot_one_on_one",
+    "corner_head": "play_corner * body_head"
+  },
+  "play_pattern_mapping": {
+    "Regular Play": "play_regular",
+    "Counterattack": "play_counter",
+    "Corner": "play_corner"
+  },
+  "source_play_pattern_mapping": {
+    "Regular Play": "Regular Play",
+    "Counterattack": "From Counter",
+    "Corner": "From Corner"
+  },
+  "training": {
+    "shots": 42258,
+    "non_penalty_shots": 41789,
+    "penalties": 469,
+    "matches": 1696,
+    "goals": 4325,
+    "cross_validation_folds": 5
+  },
+  "cross_validation": {
+    "log_loss": 0.2644639966809228,
+    "brier_score": 0.07489487849226684,
+    "roc_auc": 0.8030884725411049,
+    "fold_results": [
+      {
+        "fold": 1,
+        "log_loss": 0.2625439615187116,
+        "brier": 0.07422751569802499,
+        "roc_auc": 0.7950613994889696
+      },
+      {
+        "fold": 2,
+        "log_loss": 0.2478164695309005,
+        "brier": 0.0689641520348524,
+        "roc_auc": 0.7977628751367106
+      },
+      {
+        "fold": 3,
+        "log_loss": 0.25846218415036715,
+        "brier": 0.07272403138577038,
+        "roc_auc": 0.7874032693303472
+      },
+      {
+        "fold": 4,
+        "log_loss": 0.2660021486510956,
+        "brier": 0.07559149720392447,
+        "roc_auc": 0.7887815186843156
+      },
+      {
+        "fold": 5,
+        "log_loss": 0.2701273646459092,
+        "brier": 0.0763747021979106,
+        "roc_auc": 0.7749475297956939
+      }
+    ]
+  }
+}

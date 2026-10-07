@@ -1,0 +1,111 @@
+{
+    "model_name": "multi_competition_xg_v1",
+    "model_type": "logistic_regression_with_separate_penalty_probability",
+    "penalty_rule": {
+        "shot_type": "Penalty",
+        "xg": 0.7420042643923241,
+        "training_penalties": 469,
+        "training_penalty_goals": 348
+    },
+    "non_penalty_model": {
+        "features": [
+            "distance_m",
+            "angle_deg",
+            "under_pressure",
+            "shot_first_time",
+            "shot_one_on_one",
+            "shot_open_goal",
+            "body_left_foot",
+            "body_head",
+            "type_free_kick"
+        ],
+        "intercept": -1.0691577510841157,
+        "coefficients": {
+            "distance_m": -0.11858391879624777,
+            "angle_deg": 0.0228206369853732,
+            "under_pressure": -0.20521445435982874,
+            "shot_first_time": -0.05417960541107409,
+            "shot_one_on_one": 0.8216923107865357,
+            "shot_open_goal": 1.083612363373173,
+            "body_left_foot": -0.023474072874820392,
+            "body_head": -1.2695198834099923,
+            "type_free_kick": 0.9261798688933147
+        }
+    },
+    "training": {
+        "shots": 42258,
+        "non_penalty_shots": 41789,
+        "penalties": 469,
+        "matches": 1696,
+        "goals": 4325,
+        "competitions": 7,
+        "cross_validation_folds": 5
+    },
+    "cross_validation": {
+        "log_loss": 0.26731812742753636,
+        "brier_score": 0.07586161072674244,
+        "roc_auc": 0.797187712621996,
+        "fold_results": [
+            {
+                "fold": 1,
+                "matches": 340,
+                "shots": 8457,
+                "goals": 839,
+                "penalty_xg": 0.726027397260274,
+                "log_loss": 0.2514577987430964,
+                "brier": 0.07091269828296641,
+                "roc_auc": 0.8189251916059793,
+                "iterations": 7
+            },
+            {
+                "fold": 2,
+                "matches": 339,
+                "shots": 8466,
+                "goals": 814,
+                "penalty_xg": 0.7419354838709677,
+                "log_loss": 0.2566896605530939,
+                "brier": 0.07174700693115527,
+                "roc_auc": 0.7924403666366552,
+                "iterations": 8
+            },
+            {
+                "fold": 3,
+                "matches": 339,
+                "shots": 8516,
+                "goals": 899,
+                "penalty_xg": 0.75,
+                "log_loss": 0.276360534086874,
+                "brier": 0.07874066910306103,
+                "roc_auc": 0.7890214105997605,
+                "iterations": 8
+            },
+            {
+                "fold": 4,
+                "matches": 339,
+                "shots": 8382,
+                "goals": 841,
+                "penalty_xg": 0.753315649867374,
+                "log_loss": 0.2673997704134545,
+                "brier": 0.07545390948339721,
+                "roc_auc": 0.7903293939228138,
+                "iterations": 8
+            },
+            {
+                "fold": 5,
+                "matches": 339,
+                "shots": 8437,
+                "goals": 932,
+                "penalty_xg": 0.7379679144385026,
+                "log_loss": 0.284672866508306,
+                "brier": 0.08245002828742098,
+                "roc_auc": 0.7974641369273131,
+                "iterations": 8
+            }
+        ]
+    },
+    "benchmark": {
+        "statsbomb_log_loss": 0.2520521821549523,
+        "statsbomb_brier": 0.07126761599643601,
+        "statsbomb_roc_auc": 0.8267446817167293
+    }
+}

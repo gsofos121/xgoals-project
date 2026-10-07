@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>xG Calculator</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    />
+
+    <link
+        rel="stylesheet"
+        href="styles.css"
+    />
+</head>
+
+
+<body>
+
+    <main class="page-container">
+
+
+        <!-- ==================================================
+             HEADER
+        =================================================== -->
+
+        <header class="header">
+
+            <div>
+
+                <h1>
+                    xG Calculator
+                </h1>
+
+                <p class="subtitle">
+                    Select a shot location and describe the chance.
+                </p>
+
+            </div>
+
+        </header>
+
+
+        <!-- ==================================================
+             MAIN
+        =================================================== -->
+
+        <section class="calculator-layout">
+
+
+            <!-- ==================================================
+                 LEFT — PITCH
+            =================================================== -->
+
+            <div class="pitch-section">
+
+                <div class="section-title">
+                    1. Select shot location
+                </div>
+
+
+                <div class="pitch-wrapper">
+
+                    <svg
+                        id="pitch"
+                        class="pitch"
+                        viewBox="0 -24 680 560"
+                        role="img"
+                        aria-label="Interactive attacking half football pitch"
+                    >
+
+
+                        <!-- PITCH BASE -->
+
+                        <rect
+                            x="0"
+                            y="0"
+                            width="680"
+                            height="525"
+                            class="pitch-base"
+                        />
+
+
+                        <!-- GRASS STRIPES -->
+
+                        <rect
+                            x="0"
+                            y="0"
+                            width="680"
+                            height="75"
+                            class="pitch-stripe stripe-dark"
+                        />
+
+                        <rect
+                            x="0"
+                            y="75"
+                            width="680"
+                            height="75"
+                            class="pitch-stripe stripe-light"
+                        />
+
+                        <rect
+                            x="0"
+                            y="150"
+                            width="680"
+                            height="75"
+                            class="pitch-stripe stripe-dark"
+                        />
+
+                        <rect
+                            x="0"
+                            y="225"
+                            width="680"
+                            height="75"
+                            class="pitch-stripe stripe-light"
+                        />
+
+                        <rect
+                            x="0"
+                            y="300"
+                            width="680"
+                            height="75"
+                            class="pitch-stripe stripe-dark"
+                        />
+
+                        <rect
+                            x="0"
+                            y="375"
+                            width="680"
+                            height="75"
+                            class="pitch-stripe stripe-light"
+                        />
+
+                        <rect
+                            x="0"
+                            y="450"
+                            width="680"
+                            height="75"
+                            class="pitch-stripe stripe-dark"
+                        />
+
+
+                        <!-- OUTER BOUNDARY -->
+
+                        <rect
+                            x="2"
+                            y="2"
+                            width="676"
+                            height="521"
+                            class="pitch-line"
+                        />
+
+
+                        <!-- CORNER ARCS -->
+
+                        <path
+                            d="
+                                M20 2
+                                C20 11.94
+                                11.94 20
+                                2 20
+                            "
+                            class="pitch-line corner-arc"
+                        />
+
+                        <path
+                            d="
+                                M660 2
+                                C660 11.94
+                                668.06 20
+                                678 20
+                            "
+                            class="pitch-line corner-arc"
+                        />
+
+
+                        <!-- HALFWAY LINE -->
+
+                        <line
+                            x1="0"
+                            y1="525"
+                            x2="680"
+                            y2="525"
+                            class="pitch-line"
+                        />
+
+
+                        <!-- CENTRE CIRCLE -->
+
+                        <circle
+                            cx="340"
+                            cy="525"
+                            r="91.5"
+                            class="pitch-line"
+                        />
+
+                        <circle
+                            cx="340"
+                            cy="525"
+                            r="4.5"
+                            class="pitch-spot"
+                        />
+
+
+                        <!-- PENALTY AREA -->
+
+                        <rect
+                            x="138.4"
+                            y="0"
+                            width="403.2"
+                            height="165"
+                            class="pitch-line"
+                        />
+
+
+                        <!-- SIX-YARD BOX -->
+
+                        <rect
+                            x="248.4"
+                            y="0"
+                            width="183.2"
+                            height="55"
+                            class="pitch-line"
+                        />
+
+
+                        <!-- PENALTY SPOT -->
+
+                        <circle
+                            cx="340"
+                            cy="110"
+                            r="4.5"
+                            class="pitch-spot"
+                        />
+
+
+                        <!-- PENALTY ARC -->
+
+                        <path
+                            d="
+                                M266.88 165
+                                A91.5 91.5
+                                0 0 0
+                                413.12 165
+                            "
+                            class="pitch-line"
+                        />
+
+
+                        <!-- GOAL -->
+
+                        <rect
+                            x="303.4"
+                            y="-18"
+                            width="73.2"
+                            height="18"
+                            class="goal"
+                        />
+
+
+                        <!-- GOAL POSTS -->
+
+                        <circle
+                            cx="303.4"
+                            cy="0"
+                            r="4.5"
+                            class="goal-post-point"
+                        />
+
+                        <circle
+                            cx="376.6"
+                            cy="0"
+                            r="4.5"
+                            class="goal-post-point"
+                        />
+
+
+                        <!-- GOAL ANGLE AREA -->
+
+                        <polygon
+                            id="angle-area"
+                            points=""
+                            class="angle-area hidden"
+                        ></polygon>
+
+
+                        <!-- GOAL ANGLE LINES -->
+
+                        <line
+                            id="angle-line-left"
+                            x1="0"
+                            y1="0"
+                            x2="303.4"
+                            y2="0"
+                            class="angle-line hidden"
+                        />
+
+                        <line
+                            id="angle-line-right"
+                            x1="0"
+                            y1="0"
+                            x2="376.6"
+                            y2="0"
+                            class="angle-line hidden"
+                        />
+
+
+                        <!-- SHOT MARKER -->
+
+                        <circle
+                            id="shot-marker"
+                            cx="340"
+                            cy="250"
+                            r="10"
+                            class="shot-marker hidden"
+                        />
+
+                    </svg>
+
+                </div>
+
+
+                <!-- ==================================================
+                     POSITION INFO
+                =================================================== -->
+
+                <div class="position-info">
+
+                    <div class="info-box">
+
+                        <span class="info-label">
+                            X
+                        </span>
+
+                        <span id="x-value">
+                            -
+                        </span>
+
+                        m
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <span class="info-label">
+                            Y
+                        </span>
+
+                        <span id="y-value">
+                            -
+                        </span>
+
+                        m
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <span class="info-label">
+                            Distance
+                        </span>
+
+                        <span id="distance-value">
+                            -
+                        </span>
+
+                        m
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <span class="info-label">
+                            Goal angle
+                        </span>
+
+                        <span id="angle-value">
+                            -
+                        </span>
+
+                        °
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==================================================
+                 RIGHT — SHOT DESCRIPTION
+            =================================================== -->
+
+            <div class="controls-section">
+
+
+                <div class="section-title">
+                    2. Describe the shot
+                </div>
+
+
+                <!-- ==================================================
+                     BODY PART
+                =================================================== -->
+
+                <div class="control-group">
+
+                    <label class="group-label">
+                        Body part
+                    </label>
+
+
+                    <div
+                        id="body-part-group"
+                        class="radio-list"
+                    >
+
+
+                        <label class="radio-option">
+
+                            <input
+                                type="radio"
+                                name="body-part"
+                                value="Right Foot"
+                                checked
+                            />
+
+                            <span class="radio-custom"></span>
+
+                            <span class="radio-text">
+                                Right Foot
+                            </span>
+
+                        </label>
+
+
+                        <label class="radio-option">
+
+                            <input
+                                type="radio"
+                                name="body-part"
+                                value="Left Foot"
+                            />
+
+                            <span class="radio-custom"></span>
+
+                            <span class="radio-text">
+                                Left Foot
+                            </span>
+
+                        </label>
+
+
+                        <label class="radio-option">
+
+                            <input
+                                type="radio"
+                                name="body-part"
+                                value="Head"
+                            />
+
+                            <span class="radio-custom"></span>
+
+                            <span class="radio-text">
+                                Head
+                            </span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==================================================
+                     SHOT TYPE
+                =================================================== -->
+
+                <div class="control-group">
+
+                    <label class="group-label">
+                        Shot type
+                    </label>
+
+
+                    <div
+                        id="shot-type-group"
+                        class="radio-list"
+                    >
+
+
+                        <label class="radio-option">
+
+                            <input
+                                type="radio"
+                                name="shot-type"
+                                value="Open Play"
+                                checked
+                            />
+
+                            <span class="radio-custom"></span>
+
+                            <span class="radio-text">
+                                Open Play
+                            </span>
+
+                        </label>
+
+
+                        <label class="radio-option">
+
+                            <input
+                                type="radio"
+                                name="shot-type"
+                                value="Free Kick"
+                            />
+
+                            <span class="radio-custom"></span>
+
+                            <span class="radio-text">
+                                Free Kick
+                            </span>
+
+                        </label>
+
+
+                        <label class="radio-option">
+
+                            <input
+                                type="radio"
+                                name="shot-type"
+                                value="Penalty"
+                            />
+
+                            <span class="radio-custom"></span>
+
+                            <span class="radio-text">
+                                Penalty
+                            </span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==================================================
+                     CHANCE ORIGIN — NEW V2 FEATURE
+                =================================================== -->
+
+                <div
+                    id="chance-origin-control"
+                    class="control-group"
+                >
+
+                    <label class="group-label">
+                        Chance origin
+                    </label>
+
+
+                    <div
+                        id="chance-origin-group"
+                        class="radio-list"
+                    >
+
+
+                        <label class="radio-option">
+
+                            <input
+                                type="radio"
+                                name="chance-origin"
+                                value="Regular Play"
+                                checked
+                            />
+
+                            <span class="radio-custom"></span>
+
+                            <span class="radio-text">
+                                Regular Play
+                            </span>
+
+                        </label>
+
+
+                        <label class="radio-option">
+
+                            <input
+                                type="radio"
+                                name="chance-origin"
+                                value="Counterattack"
+                            />
+
+                            <span class="radio-custom"></span>
+
+                            <span class="radio-text">
+                                Counterattack
+                            </span>
+
+                        </label>
+
+
+                        <label class="radio-option">
+
+                            <input
+                                type="radio"
+                                name="chance-origin"
+                                value="Corner"
+                            />
+
+                            <span class="radio-custom"></span>
+
+                            <span class="radio-text">
+                                Corner
+                            </span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==================================================
+                     SHOT CONDITIONS
+                =================================================== -->
+
+                <div class="control-group">
+
+                    <label class="group-label">
+                        Shot conditions
+                    </label>
+
+
+                    <div class="context-list">
+
+
+                        <!-- UNDER PRESSURE -->
+
+                        <label class="context-option checkbox-row">
+
+                            <input
+                                type="checkbox"
+                                id="under-pressure"
+                            />
+
+                            <span class="context-custom"></span>
+
+
+                            <span class="condition-content">
+
+                                <span class="condition-name">
+                                    Under Pressure
+                                </span>
+
+
+                                <span
+                                    class="tooltip"
+                                    aria-label="Under Pressure information"
+                                >
+                                    ?
+
+                                    <span class="tooltip-text">
+                                        The shooter is being actively pressured
+                                        by an opponent at the moment of the shot.
+                                    </span>
+
+                                </span>
+
+                            </span>
+
+                        </label>
+
+
+                        <!-- FIRST TIME -->
+
+                        <label class="context-option checkbox-row">
+
+                            <input
+                                type="checkbox"
+                                id="first-time"
+                            />
+
+                            <span class="context-custom"></span>
+
+
+                            <span class="condition-content">
+
+                                <span class="condition-name">
+                                    First Time
+                                </span>
+
+
+                                <span
+                                    class="tooltip"
+                                    aria-label="First Time information"
+                                >
+                                    ?
+
+                                    <span class="tooltip-text">
+                                        The shot is taken immediately,
+                                        without controlling the ball first.
+                                    </span>
+
+                                </span>
+
+                            </span>
+
+                        </label>
+
+
+                        <!-- ONE-ON-ONE -->
+
+                        <label class="context-option checkbox-row">
+
+                            <input
+                                type="checkbox"
+                                id="one-on-one"
+                            />
+
+                            <span class="context-custom"></span>
+
+
+                            <span class="condition-content">
+
+                                <span class="condition-name">
+                                    One-on-One
+                                </span>
+
+
+                                <span
+                                    class="tooltip"
+                                    aria-label="One-on-One information"
+                                >
+                                    ?
+
+                                    <span class="tooltip-text">
+                                        The attacker has a clear direct chance
+                                        against the goalkeeper.
+                                    </span>
+
+                                </span>
+
+                            </span>
+
+                        </label>
+
+
+                        <!-- OPEN GOAL -->
+
+                        <label class="context-option checkbox-row">
+
+                            <input
+                                type="checkbox"
+                                id="open-goal"
+                            />
+
+                            <span class="context-custom"></span>
+
+
+                            <span class="condition-content">
+
+                                <span class="condition-name">
+                                    Open Goal
+                                </span>
+
+
+                                <span
+                                    class="tooltip"
+                                    aria-label="Open Goal information"
+                                >
+                                    ?
+
+                                    <span class="tooltip-text">
+                                        The goal is largely unprotected,
+                                        with the goalkeeper out of position
+                                        or unable to contest the shot.
+                                    </span>
+
+                                </span>
+
+                            </span>
+
+                        </label>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==================================================
+                     CALCULATE
+                =================================================== -->
+
+                <button
+                    id="predict-button"
+                    type="button"
+                    disabled
+                >
+                    Calculate xG
+                </button>
+
+
+                <!-- ==================================================
+                     ERROR
+                =================================================== -->
+
+                <div
+                    id="error-message"
+                    class="error-message hidden"
+                ></div>
+
+
+                <!-- ==================================================
+                     RESULT
+                =================================================== -->
+
+                <div
+                    id="result-card"
+                    class="result-card hidden"
+                >
+
+                    <div class="result-label">
+                        Expected Goals
+                    </div>
+
+
+                    <div
+                        id="xg-value"
+                        class="xg-value"
+                    >
+                        0.000
+                    </div>
+
+
+                    <div
+                        id="probability-value"
+                        class="probability-value"
+                    >
+                        0.0% chance of goal
+                    </div>
+
+
+                    <div class="result-details">
+
+                        <div>
+
+                            <span>
+                                Distance
+                            </span>
+
+                            <strong id="result-distance">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Angle
+                            </span>
+
+                            <strong id="result-angle">
+                                -
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="prediction-type"
+                        class="prediction-type"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             MODEL INFORMATION
+        =================================================== -->
+
+        <section class="model-info">
+
+            <h2>
+                About the model
+            </h2>
+
+
+            <p>
+                This calculator uses a pre-shot expected goals model
+                trained on 42,258 shots from 1,696 matches across
+                multiple competitions.
+            </p>
+
+
+            <p>
+                The pitch shows only the attacking half.
+                The yellow area represents the visible goal angle
+                from the selected shooting position.
+            </p>
+
+
+            <p>
+                The model considers shot location, distance, angle,
+                body part, chance origin and contextual information
+                such as pressure, first-time attempts, one-on-one
+                situations and open goals.
+            </p>
+
+        </section>
+
+
+    </main>
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>

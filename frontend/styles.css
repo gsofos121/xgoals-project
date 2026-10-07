@@ -1,0 +1,1975 @@
+/* ==========================================================
+   GLOBAL
+========================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+
+:root {
+
+    --bg-1: #040b15;
+    --bg-2: #061526;
+
+    --panel:
+        rgba(
+            11,
+            22,
+            35,
+            0.88
+        );
+
+    --panel-border:
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    --text-main:
+        #f2f6fb;
+
+    --text-soft:
+        #9fb3c9;
+
+    --accent:
+        #45d287;
+
+    --accent-2:
+        #71f0b2;
+
+    --danger:
+        #ff6f6f;
+
+    --pitch-line:
+        rgba(
+            255,
+            255,
+            255,
+            0.90
+        );
+
+    --angle-line:
+        rgba(
+            246,
+            211,
+            72,
+            0.50
+        );
+
+    --angle-area:
+        rgba(
+            246,
+            211,
+            72,
+            0.07
+        );
+
+    --marker:
+        #f3d53f;
+
+    --marker-border:
+        #101820;
+
+    --font-main:
+        "Manrope",
+        system-ui,
+        sans-serif;
+
+    --font-display:
+        "Space Grotesk",
+        "Manrope",
+        system-ui,
+        sans-serif;
+}
+
+
+/* ==========================================================
+   PAGE
+========================================================== */
+
+html,
+body {
+
+    margin: 0;
+    padding: 0;
+
+    min-height: 100%;
+
+    font-family:
+        var(--font-main);
+
+    color:
+        var(--text-main);
+
+    background:
+
+        radial-gradient(
+            circle at top center,
+            rgba(
+                36,
+                88,
+                128,
+                0.35
+            ),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            90deg,
+            #020812 0%,
+            #071726 55%,
+            #020812 100%
+        );
+}
+
+
+body {
+
+    padding:
+        28px
+        22px
+        40px;
+}
+
+
+.page-container {
+
+    max-width: 1260px;
+
+    margin:
+        0 auto;
+}
+
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.header {
+
+    margin-bottom:
+        26px;
+}
+
+
+.header h1 {
+
+    margin:
+        0
+        0
+        7px;
+
+    font-family:
+        var(--font-display);
+
+    font-size:
+        4rem;
+
+    line-height:
+        0.96;
+
+    letter-spacing:
+        -0.055em;
+
+    font-weight:
+        600;
+}
+
+
+.subtitle {
+
+    margin:
+        0;
+
+    color:
+        var(--text-soft);
+
+    font-size:
+        1.08rem;
+
+    font-weight:
+        400;
+
+    letter-spacing:
+        -0.01em;
+}
+
+
+/* ==========================================================
+   MAIN LAYOUT
+========================================================== */
+
+.calculator-layout {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        minmax(
+            0,
+            1.7fr
+        )
+        minmax(
+            380px,
+            0.8fr
+        );
+
+    gap:
+        22px;
+
+    align-items:
+        start;
+}
+
+
+/* ==========================================================
+   PANELS
+========================================================== */
+
+.pitch-section,
+.controls-section,
+.model-info {
+
+    background:
+        var(--panel);
+
+    border:
+        1px solid
+        var(--panel-border);
+
+    border-radius:
+        24px;
+
+    box-shadow:
+        0
+        16px
+        40px
+        rgba(
+            0,
+            0,
+            0,
+            0.22
+        );
+}
+
+
+.pitch-section {
+
+    padding:
+        18px
+        18px
+        20px;
+}
+
+
+.controls-section {
+
+    padding:
+        18px
+        20px
+        20px;
+}
+
+
+.model-info {
+
+    margin-top:
+        22px;
+
+    padding:
+        20px
+        22px;
+}
+
+
+/* ==========================================================
+   SECTION TITLES
+========================================================== */
+
+.section-title {
+
+    font-family:
+        var(--font-display);
+
+    font-size:
+        1.8rem;
+
+    font-weight:
+        600;
+
+    letter-spacing:
+        -0.035em;
+
+    margin-bottom:
+        16px;
+}
+
+
+/* ==========================================================
+   PITCH WRAPPER
+========================================================== */
+
+.pitch-wrapper {
+
+    border-radius:
+        18px;
+
+    overflow:
+        hidden;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    background:
+        rgba(
+            4,
+            15,
+            10,
+            0.25
+        );
+}
+
+
+.pitch {
+
+    display:
+        block;
+
+    width:
+        100%;
+
+    height:
+        auto;
+
+    cursor:
+        crosshair;
+}
+
+
+.pitch.pitch-locked {
+
+    cursor:
+        not-allowed;
+}
+
+
+/* ==========================================================
+   GRASS
+========================================================== */
+
+.pitch-base {
+
+    fill:
+        #1e6e3f;
+}
+
+
+.pitch-stripe {
+
+    opacity:
+        1;
+}
+
+
+.stripe-dark {
+
+    fill:
+        #1f7041;
+}
+
+
+.stripe-light {
+
+    fill:
+        #2a7f4e;
+}
+
+
+/* ==========================================================
+   PITCH LINES
+========================================================== */
+
+.pitch-line {
+
+    fill:
+        none;
+
+    stroke:
+        var(--pitch-line);
+
+    stroke-width:
+        3.2;
+
+    stroke-linecap:
+        round;
+
+    stroke-linejoin:
+        round;
+}
+
+
+.corner-arc {
+
+    fill:
+        none;
+
+    stroke-width:
+        3.2;
+}
+
+
+.pitch-spot,
+.goal-post-point {
+
+    fill:
+        rgba(
+            255,
+            255,
+            255,
+            0.90
+        );
+}
+
+
+/* ==========================================================
+   GOAL
+========================================================== */
+
+.goal {
+
+    fill:
+        none;
+
+    stroke:
+        rgba(
+            255,
+            255,
+            255,
+            0.95
+        );
+
+    stroke-width:
+        3;
+}
+
+
+/* ==========================================================
+   GOAL ANGLE
+========================================================== */
+
+.angle-area {
+
+    fill:
+        var(--angle-area);
+}
+
+
+.angle-line {
+
+    stroke:
+        var(--angle-line);
+
+    stroke-width:
+        1.9;
+
+    stroke-dasharray:
+        7
+        7;
+
+    stroke-linecap:
+        round;
+}
+
+
+/* ==========================================================
+   SHOT MARKER
+========================================================== */
+
+.shot-marker {
+
+    fill:
+        var(--marker);
+
+    stroke:
+        var(--marker-border);
+
+    stroke-width:
+        3.2;
+
+    filter:
+        drop-shadow(
+            0
+            0
+            5px
+            rgba(
+                243,
+                213,
+                63,
+                0.20
+            )
+        );
+}
+
+
+.hidden {
+
+    display:
+        none !important;
+}
+
+
+/* ==========================================================
+   POSITION INFO
+========================================================== */
+
+.position-info {
+
+    margin-top:
+        16px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap:
+        10px;
+}
+
+
+.info-box {
+
+    background:
+        rgba(
+            7,
+            18,
+            30,
+            0.88
+        );
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.06
+        );
+
+    border-radius:
+        14px;
+
+    padding:
+        12px
+        14px;
+
+    text-align:
+        center;
+}
+
+
+.info-label {
+
+    display:
+        block;
+
+    margin-bottom:
+        8px;
+
+    font-size:
+        0.72rem;
+
+    font-weight:
+        600;
+
+    letter-spacing:
+        0.10em;
+
+    text-transform:
+        uppercase;
+
+    color:
+        #86a0bb;
+}
+
+
+.info-box span:last-child,
+.info-box strong {
+
+    font-family:
+        var(--font-display);
+
+    font-size:
+        1.05rem;
+
+    font-weight:
+        600;
+
+    color:
+        var(--text-main);
+}
+
+
+/* ==========================================================
+   CONTROL GROUP
+========================================================== */
+
+.control-group {
+
+    margin-bottom:
+        16px;
+}
+
+
+.group-label {
+
+    display:
+        block;
+
+    margin-bottom:
+        9px;
+
+    color:
+        #c8d7e6;
+
+    font-size:
+        0.94rem;
+
+    font-weight:
+        600;
+
+    letter-spacing:
+        -0.015em;
+}
+
+
+/* ==========================================================
+   RADIO GRID
+========================================================== */
+
+.radio-list {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap:
+        8px;
+}
+
+
+/* ==========================================================
+   CHANCE ORIGIN
+   Give Counterattack slightly more room
+========================================================== */
+
+#chance-origin-group {
+
+    grid-template-columns:
+        1.05fr
+        1.28fr
+        0.90fr;
+}
+
+
+/* ==========================================================
+   RADIO OPTION
+========================================================== */
+
+.radio-option {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        7px;
+
+    min-width:
+        0;
+
+    min-height:
+        50px;
+
+    padding:
+        11px
+        8px;
+
+    border-radius:
+        12px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    background:
+        rgba(
+            7,
+            17,
+            28,
+            0.90
+        );
+
+    cursor:
+        pointer;
+
+    text-align:
+        center;
+
+    transition:
+        border-color 0.18s ease,
+        background 0.18s ease,
+        transform 0.18s ease;
+}
+
+
+.radio-option:hover {
+
+    border-color:
+        rgba(
+            113,
+            240,
+            178,
+            0.26
+        );
+
+    background:
+        rgba(
+            10,
+            24,
+            38,
+            0.95
+        );
+}
+
+
+.radio-option
+input[type="radio"] {
+
+    position:
+        absolute;
+
+    opacity:
+        0;
+
+    pointer-events:
+        none;
+}
+
+
+/* ==========================================================
+   RADIO CIRCLE
+   Fixed centering
+========================================================== */
+
+.radio-custom {
+
+    width:
+        18px;
+
+    height:
+        18px;
+
+    min-width:
+        18px;
+
+    min-height:
+        18px;
+
+    flex:
+        0 0 18px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border-radius:
+        50%;
+
+    border:
+        2px solid
+        rgba(
+            182,
+            198,
+            215,
+            0.72
+        );
+
+    transition:
+        border-color 0.18s ease,
+        background 0.18s ease;
+}
+
+
+.radio-custom::after {
+
+    content:
+        "";
+
+    width:
+        8px;
+
+    height:
+        8px;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--accent-2);
+
+    transform:
+        scale(0);
+
+    transform-origin:
+        center;
+
+    transition:
+        transform 0.18s ease;
+}
+
+
+.radio-option
+input[type="radio"]:checked
++
+.radio-custom {
+
+    border-color:
+        var(--accent-2);
+}
+
+
+.radio-option
+input[type="radio"]:checked
++
+.radio-custom::after {
+
+    transform:
+        scale(1);
+}
+
+
+.radio-option:has(
+    input[type="radio"]:checked
+) {
+
+    border-color:
+        rgba(
+            113,
+            240,
+            178,
+            0.42
+        );
+
+    background:
+        rgba(
+            10,
+            27,
+            32,
+            0.95
+        );
+}
+
+
+/* ==========================================================
+   RADIO TEXT
+========================================================== */
+
+.radio-text {
+
+    display:
+        block;
+
+    min-width:
+        0;
+
+    color:
+        var(--text-main);
+
+    font-size:
+        0.82rem;
+
+    font-weight:
+        600;
+
+    line-height:
+        1.15;
+
+    letter-spacing:
+        -0.025em;
+
+    white-space:
+        nowrap;
+
+    overflow:
+        visible;
+
+    text-align:
+        center;
+}
+
+
+/* Chance origin text can be slightly smaller */
+
+#chance-origin-group
+.radio-text {
+
+    font-size:
+        0.79rem;
+}
+
+
+/* ==========================================================
+   SHOT CONDITIONS GRID
+========================================================== */
+
+.context-list {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap:
+        8px;
+}
+
+
+/* ==========================================================
+   CONDITION OPTION
+========================================================== */
+
+.context-option {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+    min-width:
+        0;
+
+    min-height:
+        50px;
+
+    padding:
+        11px
+        10px;
+
+    border-radius:
+        12px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    background:
+        rgba(
+            7,
+            17,
+            28,
+            0.90
+        );
+
+    cursor:
+        pointer;
+
+    transition:
+        border-color 0.18s ease,
+        background 0.18s ease,
+        opacity 0.18s ease;
+}
+
+
+.context-option:hover {
+
+    border-color:
+        rgba(
+            113,
+            240,
+            178,
+            0.26
+        );
+
+    background:
+        rgba(
+            10,
+            24,
+            38,
+            0.95
+        );
+}
+
+
+.context-option
+input[type="checkbox"] {
+
+    position:
+        absolute;
+
+    opacity:
+        0;
+
+    pointer-events:
+        none;
+}
+
+
+/* ==========================================================
+   CONDITION CIRCLE
+   Same centered construction as radio buttons
+========================================================== */
+
+.context-custom {
+
+    width:
+        18px;
+
+    height:
+        18px;
+
+    min-width:
+        18px;
+
+    min-height:
+        18px;
+
+    flex:
+        0 0 18px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border-radius:
+        50%;
+
+    border:
+        2px solid
+        rgba(
+            182,
+            198,
+            215,
+            0.72
+        );
+
+    transition:
+        border-color 0.18s ease,
+        background 0.18s ease;
+}
+
+
+.context-custom::after {
+
+    content:
+        "";
+
+    width:
+        8px;
+
+    height:
+        8px;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--accent-2);
+
+    transform:
+        scale(0);
+
+    transform-origin:
+        center;
+
+    transition:
+        transform 0.18s ease;
+}
+
+
+.context-option
+input[type="checkbox"]:checked
++
+.context-custom {
+
+    border-color:
+        var(--accent-2);
+}
+
+
+.context-option
+input[type="checkbox"]:checked
++
+.context-custom::after {
+
+    transform:
+        scale(1);
+}
+
+
+.context-option:has(
+    input[type="checkbox"]:checked
+) {
+
+    border-color:
+        rgba(
+            113,
+            240,
+            178,
+            0.42
+        );
+
+    background:
+        rgba(
+            10,
+            27,
+            32,
+            0.95
+        );
+}
+
+
+/* ==========================================================
+   CONDITION CONTENT
+========================================================== */
+
+.condition-content {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    min-width:
+        0;
+
+    width:
+        100%;
+
+    gap:
+        6px;
+}
+
+
+.condition-name {
+
+    min-width:
+        0;
+
+    color:
+        var(--text-main);
+
+    font-size:
+        0.82rem;
+
+    font-weight:
+        600;
+
+    line-height:
+        1.15;
+
+    letter-spacing:
+        -0.02em;
+
+    white-space:
+        nowrap;
+}
+
+
+/* ==========================================================
+   TOOLTIP ICON
+========================================================== */
+
+.tooltip {
+
+    position:
+        relative;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    width:
+        20px;
+
+    height:
+        20px;
+
+    min-width:
+        20px;
+
+    flex:
+        0 0 20px;
+
+    border-radius:
+        50%;
+
+    border:
+        1px solid
+        rgba(
+            159,
+            179,
+            201,
+            0.45
+        );
+
+    color:
+        #9fb3c9;
+
+    font-family:
+        var(--font-main);
+
+    font-size:
+        0.72rem;
+
+    font-weight:
+        700;
+
+    line-height:
+        1;
+
+    cursor:
+        help;
+
+    transition:
+        border-color 0.18s ease,
+        color 0.18s ease,
+        background 0.18s ease;
+}
+
+
+.tooltip:hover {
+
+    color:
+        var(--accent-2);
+
+    border-color:
+        rgba(
+            113,
+            240,
+            178,
+            0.60
+        );
+
+    background:
+        rgba(
+            113,
+            240,
+            178,
+            0.08
+        );
+}
+
+
+/* ==========================================================
+   TOOLTIP BOX
+========================================================== */
+
+.tooltip-text {
+
+    position:
+        absolute;
+
+    right:
+        0;
+
+    bottom:
+        calc(
+            100% + 12px
+        );
+
+    width:
+        250px;
+
+    padding:
+        11px
+        13px;
+
+    border-radius:
+        10px;
+
+    background:
+        #101d2a;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.10
+        );
+
+    color:
+        #d8e3ec;
+
+    font-family:
+        var(--font-main);
+
+    font-size:
+        0.78rem;
+
+    font-weight:
+        400;
+
+    line-height:
+        1.5;
+
+    text-align:
+        left;
+
+    opacity:
+        0;
+
+    visibility:
+        hidden;
+
+    transform:
+        translateY(
+            5px
+        );
+
+    pointer-events:
+        none;
+
+    transition:
+        opacity 0.18s ease,
+        transform 0.18s ease,
+        visibility 0.18s ease;
+
+    z-index:
+        100;
+}
+
+
+.tooltip:hover
+.tooltip-text {
+
+    opacity:
+        1;
+
+    visibility:
+        visible;
+
+    transform:
+        translateY(
+            0
+        );
+}
+
+
+.tooltip-text::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        100%;
+
+    right:
+        7px;
+
+    border-width:
+        6px;
+
+    border-style:
+        solid;
+
+    border-color:
+        #101d2a
+        transparent
+        transparent
+        transparent;
+}
+
+
+/* ==========================================================
+   DISABLED OPTIONS
+========================================================== */
+
+.disabled-option {
+
+    opacity:
+        0.48;
+
+    pointer-events:
+        none;
+}
+
+
+/* ==========================================================
+   CALCULATE BUTTON
+========================================================== */
+
+button#predict-button {
+
+    width:
+        100%;
+
+    border:
+        0;
+
+    border-radius:
+        14px;
+
+    padding:
+        15px
+        18px;
+
+    font-family:
+        var(--font-display);
+
+    font-size:
+        1.15rem;
+
+    font-weight:
+        600;
+
+    letter-spacing:
+        -0.02em;
+
+    color:
+        #03140b;
+
+    background:
+        linear-gradient(
+            180deg,
+            #52d98a 0%,
+            #3fc774 100%
+        );
+
+    cursor:
+        pointer;
+
+    transition:
+        transform 0.18s ease,
+        filter 0.18s ease,
+        opacity 0.18s ease;
+}
+
+
+button#predict-button:hover:not(:disabled) {
+
+    transform:
+        translateY(
+            -1px
+        );
+
+    filter:
+        brightness(
+            1.03
+        );
+}
+
+
+button#predict-button:disabled {
+
+    opacity:
+        0.55;
+
+    cursor:
+        not-allowed;
+}
+
+
+/* ==========================================================
+   ERROR
+========================================================== */
+
+.error-message {
+
+    margin-top:
+        12px;
+
+    padding:
+        12px
+        14px;
+
+    border-radius:
+        12px;
+
+    background:
+        rgba(
+            125,
+            28,
+            28,
+            0.20
+        );
+
+    border:
+        1px solid
+        rgba(
+            255,
+            111,
+            111,
+            0.28
+        );
+
+    color:
+        #ffb6b6;
+
+    line-height:
+        1.5;
+}
+
+
+/* ==========================================================
+   RESULT
+========================================================== */
+
+.result-card {
+
+    margin-top:
+        14px;
+
+    padding:
+        16px
+        14px
+        14px;
+
+    border-radius:
+        18px;
+
+    border:
+        1px solid
+        rgba(
+            83,
+            217,
+            136,
+            0.22
+        );
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(
+                18,
+                54,
+                60,
+                0.48
+            )
+            0%,
+            rgba(
+                10,
+                25,
+                28,
+                0.72
+            )
+            100%
+        );
+
+    text-align:
+        center;
+}
+
+
+.result-label {
+
+    font-size:
+        0.76rem;
+
+    font-weight:
+        600;
+
+    letter-spacing:
+        0.14em;
+
+    text-transform:
+        uppercase;
+
+    color:
+        #99b8c9;
+
+    margin-bottom:
+        8px;
+}
+
+
+.xg-value {
+
+    font-family:
+        var(--font-display);
+
+    font-size:
+        3.4rem;
+
+    line-height:
+        1;
+
+    font-weight:
+        600;
+
+    letter-spacing:
+        -0.055em;
+
+    color:
+        #58ea96;
+
+    margin-bottom:
+        8px;
+}
+
+
+.probability-value {
+
+    font-size:
+        0.91rem;
+
+    font-weight:
+        600;
+
+    color:
+        #eaf4fb;
+
+    margin-bottom:
+        12px;
+}
+
+
+.result-details {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap:
+        8px;
+
+    margin-bottom:
+        10px;
+}
+
+
+.result-details div {
+
+    border-radius:
+        12px;
+
+    padding:
+        9px
+        10px;
+
+    background:
+        rgba(
+            7,
+            18,
+            30,
+            0.72
+        );
+}
+
+
+.result-details span {
+
+    display:
+        block;
+
+    margin-bottom:
+        5px;
+
+    font-size:
+        0.74rem;
+
+    color:
+        #9cb2c6;
+}
+
+
+.result-details strong {
+
+    font-family:
+        var(--font-display);
+
+    font-size:
+        0.94rem;
+
+    font-weight:
+        600;
+
+    color:
+        #ffffff;
+}
+
+
+.prediction-type {
+
+    font-size:
+        0.78rem;
+
+    color:
+        #8ea7b9;
+}
+
+
+/* ==========================================================
+   MODEL INFO
+========================================================== */
+
+.model-info h2 {
+
+    margin:
+        0
+        0
+        14px;
+
+    font-family:
+        var(--font-display);
+
+    font-size:
+        1.8rem;
+
+    font-weight:
+        600;
+
+    letter-spacing:
+        -0.035em;
+}
+
+
+.model-info p {
+
+    margin:
+        0
+        0
+        12px;
+
+    color:
+        var(--text-soft);
+
+    line-height:
+        1.75;
+
+    font-size:
+        0.95rem;
+
+    font-weight:
+        400;
+}
+
+
+.model-info p:last-child {
+
+    margin-bottom:
+        0;
+}
+
+
+/* ==========================================================
+   RESPONSIVE — TABLET
+========================================================== */
+
+@media (
+    max-width: 1080px
+) {
+
+    .calculator-layout {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .header h1 {
+
+        font-size:
+            3.25rem;
+    }
+
+
+    #chance-origin-group {
+
+        grid-template-columns:
+            repeat(
+                3,
+                minmax(
+                    0,
+                    1fr
+                )
+            );
+    }
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE — MOBILE
+========================================================== */
+
+@media (
+    max-width: 720px
+) {
+
+    body {
+
+        padding:
+            18px
+            14px
+            28px;
+    }
+
+
+    .header h1 {
+
+        font-size:
+            2.6rem;
+    }
+
+
+    .subtitle {
+
+        font-size:
+            1rem;
+    }
+
+
+    .section-title {
+
+        font-size:
+            1.45rem;
+    }
+
+
+    .position-info {
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(
+                    0,
+                    1fr
+                )
+            );
+    }
+
+
+    .radio-list,
+    #chance-origin-group {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .context-list {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .radio-option {
+
+        justify-content:
+            flex-start;
+
+        padding-left:
+            14px;
+    }
+
+
+    .radio-text {
+
+        text-align:
+            left;
+
+        font-size:
+            0.88rem;
+    }
+
+
+    #chance-origin-group
+    .radio-text {
+
+        font-size:
+            0.88rem;
+    }
+
+
+    .xg-value {
+
+        font-size:
+            3.2rem;
+    }
+
+
+    .tooltip-text {
+
+        width:
+            210px;
+    }
+
+}

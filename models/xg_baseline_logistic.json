@@ -1,0 +1,26 @@
+{
+    "model_type": "logistic_regression",
+    "features": [
+        "distance_m",
+        "angle_deg"
+    ],
+    "intercept": -1.1800047944842968,
+    "coefficients": {
+        "distance_m": -0.10371913013570547,
+        "angle_deg": 0.013572661163764101
+    },
+    "training_info": {
+        "total_shots": 9908,
+        "training_shots": 7854,
+        "testing_shots": 2054,
+        "training_matches": 304,
+        "testing_matches": 76,
+        "random_state": 42,
+        "test_size": 0.2
+    },
+    "performance": {
+        "log_loss": 0.3041302899900989,
+        "brier_score": 0.08670948305288242,
+        "roc_auc": 0.7165011682242991
+    }
+}

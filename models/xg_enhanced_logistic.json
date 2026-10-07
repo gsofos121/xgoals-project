@@ -1,0 +1,45 @@
+{
+    "model_type": "enhanced_logistic_regression",
+    "features": [
+        "distance_m",
+        "angle_deg",
+        "under_pressure",
+        "shot_first_time",
+        "shot_one_on_one",
+        "shot_open_goal",
+        "body_left_foot",
+        "body_head",
+        "type_free_kick",
+        "type_penalty"
+    ],
+    "intercept": -0.7743051235538072,
+    "coefficients": {
+        "distance_m": -0.1260270163014961,
+        "angle_deg": 0.015366258119408607,
+        "under_pressure": -0.2663880443375242,
+        "shot_first_time": -0.07099400920152982,
+        "shot_one_on_one": 0.7092668459329247,
+        "shot_open_goal": 1.0036199406805588,
+        "body_left_foot": -0.10161818406340886,
+        "body_head": -1.0289108269191425,
+        "type_free_kick": 0.6617389407903786,
+        "type_penalty": 2.985613822482646
+    },
+    "categorical_rules": {
+        "shot_body_part": {
+            "reference": "Right Foot",
+            "Left Foot": "body_left_foot",
+            "Head": "body_head"
+        },
+        "shot_type": {
+            "reference": "Open Play",
+            "Free Kick": "type_free_kick",
+            "Penalty": "type_penalty"
+        }
+    },
+    "performance": {
+        "log_loss": 0.2860480794439095,
+        "brier_score": 0.08137729551767184,
+        "roc_auc": 0.7599705404307192
+    }
+}
